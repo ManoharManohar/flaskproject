@@ -1,0 +1,158 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head> -->
+
+
+
+
+{% extends 'dashboard.html' %}
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        /* padding-top: 5%; */
+        text-align: center;
+        background-color:skyblue;
+        height: 700px;
+        /* color: #d41010; */
+    }
+
+    /* form styles */
+    form {
+        margin: 30px auto;
+        padding: 20px;
+        background-color: lightblue;
+        border-radius: 8px;
+        box-shadow: 5px 2px 10px rgb(106, 160, 155);
+        width: 350px;
+        display: inline-block;
+        /* margin: 2%; */
+        /* font-size: 10px; */
+        margin-top: 80px;
+    }
+
+    form label {
+        display: block;
+        /* color: black; */
+        font-size: 20px;
+        padding-left: 5%;
+        text-align: left;
+    }
+
+    form input[type="text"] {
+        width: 90%;
+        padding: 8px;
+        margin: 4px;
+        border-radius: 4px;
+        border: 1px solid #ca8f8f;
+        text-align: left;
+    }
+
+    .btn {
+        background-color: rgb(51, 0, 128);
+        color: whitesmoke;
+        border: none;
+        padding: 10px;
+        width: 100px;
+        cursor: pointer;
+        border-radius: 10px;
+        font-size: 16px;
+    }
+
+    .btn:hover {
+        background-color: blueviolet;
+        /* color: white; */
+    }
+
+    h2 {
+        color: #121512;
+        background-color: aliceblue;
+        border-style: groove;
+        /* margin: 20%; */
+        font-size: 35px;
+        margin-bottom: 20px;
+        /* animation-name: blink;
+        animation-iteration-count: infinite;
+        animation: blink 3s infinite; */
+    }
+
+    @keyframes blink {
+        0% {
+            color: blue;
+        }
+
+        20% {
+            color: #45a049;
+        }
+
+        40% {
+            color: #9ad20c;
+        }
+
+        60% {
+            color: rgb(2, 21, 21);
+        }
+
+        80% {
+            color: rgb(205, 24, 205);
+        }
+
+        100% {
+            color: brown;
+        }
+    }
+
+    a{
+        text-decoration: none;
+    }
+</style>
+
+<!-- <body>
+    <h2>View all Notes</h2>
+    <form method="POST">
+        <center>
+
+            <label>Tittle</label>
+            <input type="text" name="title" placeholder="Enter the title"><br>
+            <label>Description</label>
+            <input type="text" name="desc" placeholder="Enter the Description"><br><br>
+            <a href="{{url_for('update')}}"><button class="btn">Update</button></a>
+            <button class="btn">Delete</button>
+            <a href="#"><button class="btn">View notes</button></a>
+        </center>
+    </form>
+</body>
+
+</html> -->
+{% block content %}
+<table>
+    <thread>
+        <tr>
+            <th>Notes_id</th>
+            <th>Title</th>
+            <th>Created_time</th>
+            <th>link</th>
+        </tr>
+    </thread>
+    <tbody>
+        {% for i in notesdata %}
+        <tr>
+
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[2]}}</td>
+            <td><a href="{{url_for('readnotes',nid=i[0])}}">View</a></td>
+            <td><a href="{{url_for('updatenotes',nid=i[0])}}">Update</a></td>
+            <td><a href="{{url_for('deletenotes',nid=i[0])}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
+
+
+
